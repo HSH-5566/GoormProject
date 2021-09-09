@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <style>
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        min-height: 200px;
+        margin: 0 auto;
+      }
+      .text {
+        border: 2px solid black;
+        display: block;
+        width: 100%;
+        min-height: 200px;
+        overflow-y: scroll;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <h1>문자열 치환 함수 만들기</h1>
+      <div class="container">
+        <textarea name="text" id="text" class="text" cols="30" rows="10">
+안녕하세요 아무 문자열이나 적어봤습니다. 여러분 독서를 좋아하시나요? 독서는 마음의 양식입니다. 오늘의 내 한걸음은 보잘것 없지만, 지식의 한걸음은 걸을수록 그 보폭이 넓어져 세상을 이롭게 만들수 있을것입니다.</textarea
+        >
+      </div>
+      <div class="container">
+        타겟 단어: <input id="target-word" type="text" /> 바꿀 단어:
+        <input id="changed-word" type="text" />
+        <button id="submit" type="submit">실행</button>
+        <hr />
+        <h2>
+          결과는 아래에 나와요~
+          <p id="word-ctn"></p>
+        </h2>
+        <textarea
+          name="new-text"
+          id="new-text"
+          class="text"
+          cols="30"
+          rows="10"
+        ></textarea>
+      </div>
+    </div>
+  </body>
+  <script src="./index.js"></script>
+</html>
