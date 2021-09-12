@@ -9,7 +9,7 @@ function changeText(text, word, newWord){
 	return changedText;
 }
 
-function changedText2(text, word, newWord){
+function changeText2(text, word, newWord){
 	const words = text.split(" ");
 	//람다함수 "배열내장함수"
 	const changedWords = words.map(_word =>{
