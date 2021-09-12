@@ -20,6 +20,7 @@ body{
 }
 .title{
 	color:#2D2424;
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 .container {
 	vertical-align:middle;
@@ -44,6 +45,20 @@ body{
 	overflow-y: scroll;
 	margin: 0 auto;
 	resize: none;
+}
+textarea::-webkit-scrollbar {
+	width: 20px; /*스크롤바의 너비*/
+}
+
+textarea::-webkit-scrollbar-thumb {
+	background-color: #CEE5D0; /*스크롤바의 색상*/
+	background-clip: padding-box;
+	border: 4px solid transparent;
+	border-radius: 10px;
+}
+
+textarea::-webkit-scrollbar-track {
+	display: none;
 }
 .inputText{
 	text-align:center;
