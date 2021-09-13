@@ -28,3 +28,13 @@ const onClickSubmit = (e) => {
 }
 
 submit.addEventListener('click', onClickSubmit);
+
+
+var mql = window.matchMedia("screen and (max-width: 1145px)");
+mql.addListener(function(e) {
+    if(e.matches) {
+	    document.getElementById("submit").innerHTML = "<i class='fas fa-arrow-right fa-2x'></i>";
+	}else{
+		document.getElementById("submit").innerHTML = "<i class='fas fa-arrow-down fa-2x'></i>";
+	}
+});

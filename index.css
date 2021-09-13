@@ -6,10 +6,14 @@
 	}
 	.container2{
 		display:block !important;
+		max-width: 1000px !important;
 		margin: 0 auto;
 	}
 	.inputText{
 		height:20px !important;
+	}
+	.submitBtn{
+		margin: 10px 0 10px 0;
 	}
 }
 body{
