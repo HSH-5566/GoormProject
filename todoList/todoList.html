@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="todoList.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+		<title>TODO LIST</title>
+	</head>
+	<body>
+		<br>
+		<div class="titlename">MY TODO LIST</div>
+		<div class="form">
+			<input type="text" name="title" class="title" placeholder="내용을 입력해주세요"/>
+			<select name="priority" class="priority">
+				<option value="normal">일반</option>
+				<option value="high">높음</option>
+				<option value="low">낮음</option>
+			</select>
+			<button name="save" class="save"><i class="fas fa-save fa-lg"></i></button>
+		</div>
+		<div class="list_all">
+			<div class="list">
+				<div class="list_title"> TODO </div>
+				<table id="table_todo">
+					<thead>
+						<tr>
+							<th></th>
+							<th>우선순위</th>
+							<th>내용</th>
+							<th>날짜</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="list">
+				<div class="list_title"> DOING </div>
+				<table id="table_doing">
+					<thead>
+						<tr>
+							<th></th>
+							<th>우선순위</th>
+							<th>내용</th>
+							<th>날짜</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="list">
+				<div class="list_title"> DONE </div>
+				<table id="table_done">
+					<thead>
+						<tr>
+							<th></th>
+							<th>우선순위</th>
+							<th>내용</th>
+							<th>날짜</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<br>
+		<button name="clear" class="clear"><i class="fas fa-trash-alt fa-lg"></i></button>
+		<script type="text/javascript" src="todoList.js"></script>
+	</body>
+</html>

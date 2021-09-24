@@ -1,0 +1,53 @@
+경기대 React 배우기 2차시 과제 - 배열의 내장함수 13p
+
+*parameter는 매개변수로 함수선언부에 정의됨
+ argument는 인자로 함수호출부에서 사용됨
+ ex) const a = 1;
+ 	 let func = function(b){...}; // b는 parameter
+	 func(a); // 1은 argument
+
+js에서 Call by Value는 argument로 값(value)이 넘어온다.
+이때 caller가 인자를 복사해서 넘겨줬으므로 callee에서 해당 인자를 변경해도 원본이 훼손되지 않는다.
+ex) const a = 1;
+	function func(b){ b = b + 1 }; // callee
+	func(a); // caller
+	console.log(a); // 1
+
+js에서 Call by Reference는 arqument로 값에 대한 참조 주소(**reference)가 넘어온다.
+이때 reference를 넘기므로 reference가 가리키는 값을 복사하여 넘겨주지는 않게된다.
+따라서 caller가 인자를 복사해서 넘기지 않아 callee에서 해당 인자를 변경하면 원본도 변경되어 훼손된다.
+ex) let a = {};
+	function func(b){ b.a = 1 }; // callee
+	func(a); // caller
+	console.log(a); // 1
+
+-> 따라서 Call by Reference를 이용할 시 배열의 원본이 훼손될 수 있다.
+
+==================================================================================
+
++) 그런데 아래의 코드에서는 참조타입을 인수로 넘겨줬음에도 원본에 아무런 변화가 없다.
+	const me = {
+	  name: 'Jimmy'
+	};
+
+	function changeName(person) { //callee
+	  person = { name: 'Joo' };
+	}
+
+	console.log(me); // { name: 'Jimmy' }
+
+	changeName(me); //caller
+
+	console.log(me); // { name: 'Jimmy' }
+	
+	me를 인수로 넘겼지만 사실상 참조값이 복사되어 넘어간다.
+	따라서 인수(매개변수)인 person은 복사된 참조값을 가지고있고 같은 객체를 가리키고 있다.
+	함수가 실행되면 새로운 객체(name: 'Joo')가 인수인 person한테 할당된다.
+	결과적으로 me와 person은 다른 객체를 참조하게 된다.
+
+	인자가 원시값이냐 참조값이냐의 차이만 있을 뿐, 원시 타입의 경우 값이 복사되어 전달되고 참조 타입의 경우 메모리 주소의 값(참조값)이 복사되어서 전달되기 때문에 두 경우 모두 동작 원리는 같게된다.
+	결국, 변수가 가리키는 메모리 공간에 저장되어 있는 값을 복사하여 전달한다는 관점에서 바라볼 때 자바스크립트는 항상 값에 의한 전달(Call By Value)만 존재한다고 말할 수 있다.
+
+=>	자바스크립트에서는 참조 타입을 인자로 넘기면 참조값에 대한 복사본을 만들어서 넘긴다.
+	자바스크립트에서 call by reference는 존재하지 않고 call by value만 존재한다.
+	이러한 혼동을 줄이고자 call by sharing이란 용어로 부르기도 한다.
