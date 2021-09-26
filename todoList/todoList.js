@@ -57,7 +57,7 @@ function checkBoxClick(e){
 	}
 	window.localStorage.setItem(LOCALSTORAGE_ID, JSON.stringify(initData));
 	
-	const targetTr = document.querySelector('tr[data-id=`${dataId}`]');
+	const targetTr = document.querySelector(`tr[data-id='${dataId}']`);
 	targetTr.remove();
 	createBlock(
 		dataId,
@@ -72,7 +72,11 @@ function checkBoxClick(e){
 function createBlock(dataId, type, priority, contents, date){
 	const tr = document.createElement('tr');
 	tr.dataset.id = dataId;
-	const td1 = document.createElement('td');
+	
+	for (var i=1; i<5; i++){
+		eval("var td"+i+" = document.createElement('td')");
+	}//const td1 = document.createElement('td'); 추가
+
 	const checkBoxElement = document.createElement('input');
 	checkBoxElement.type = 'checkbox';
 	checkBoxElement.dataset.item = dataId;
@@ -82,23 +86,29 @@ function createBlock(dataId, type, priority, contents, date){
 		checkBoxElement.disabled = true;
 	}
 	td1.appendChild(checkBoxElement);
-	
-	const td2 = document.createElement('td');
 	td2.innerText = PRIORITY[priority];
-	const td3 = document.createElement('td');
 	td3.innerText = contents;
-	const td4 = document.createElement('td');
 	td4.innerText = new Date(date).toLocaleString('ko-KR');
 	
 	[td1, td2, td3, td4].forEach((element) => {
 		tr.appendChild(element);
 	});
-	
+	tr.classList.add(PRIORITY[priority]);//class 추가
 	const table = document.getElementById(`table_${type}`);
 	if(!table){
 		return false;
 	}
-	table.children[1].appendChild(tr);
+	
+	if(PRIORITY[priority] === '높음'){
+		table.children[1].prepend(tr);
+	}
+	else if(PRIORITY[priority] === '일반'){
+		const lowElement = table.querySelector('.낮음');
+		table.children[1].insertBefore(tr, lowElement);
+	}else{
+		table.children[1].appendChild(tr);
+	}//우선순위따라 저장위치 변경 추가
+	
 	return true;
 }
 
@@ -137,7 +147,7 @@ window.onload = () => {
 	Object.keys(initData).forEach(dataId => createBlock(
 		dataId,
 		initData[dataId].type,
-		initData[dataId].priorty,
+		initData[dataId].priority,
 		initData[dataId].contents,
 		initData[dataId].date
 	))
