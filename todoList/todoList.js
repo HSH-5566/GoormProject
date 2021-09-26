@@ -93,17 +93,17 @@ function createBlock(dataId, type, priority, contents, date){
 	[td1, td2, td3, td4].forEach((element) => {
 		tr.appendChild(element);
 	});
-	tr.classList.add(PRIORITY[priority]);//class 추가
+	tr.classList.add(priority);//class 추가
 	const table = document.getElementById(`table_${type}`);
 	if(!table){
 		return false;
 	}
 	
-	if(PRIORITY[priority] === '높음'){
+	if(priority === 'high'){
 		table.children[1].prepend(tr);
 	}
-	else if(PRIORITY[priority] === '일반'){
-		const lowElement = table.querySelector('.낮음');
+	else if(priority === 'normal'){
+		const lowElement = table.querySelector('.low');
 		table.children[1].insertBefore(tr, lowElement);
 	}else{
 		table.children[1].appendChild(tr);
@@ -152,3 +152,14 @@ window.onload = () => {
 		initData[dataId].date
 	))
 }
+	
+/**
+ * 
+ * 도전해보면 좋을 부분
+ * 1. 이쁘게 변경해보기
+ * 2. 우선순위에 따라 맨 위에로 checkbox 올리기
+ * 3. BLOCK 함수 부르기 최적화
+ * 4. initData에 Observer를 붙이고 변경될 때를 감지해서 Table 데이터 수정하기 [hard]
+ * 		initData를 수정하고 Object의 getter, setter를 이용해 변경해보기.
+ *		다른 방법도 있다면 적극적으로 해보기
+ */
