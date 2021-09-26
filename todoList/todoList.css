@@ -45,8 +45,9 @@ body{
 	justify-content: center;
 }
 .list_title{
-	font-size: 1rem;
+	font-size: 1.5rem;
 	font-weight: bold;
+	padding-bottom: 5px;
 	background-color: #CEE5D0;
 }
 .list{
@@ -57,6 +58,12 @@ body{
 	box-shadow: 0px 7px 15px 4px rgba(0,0,0,0.32);
 	background: #F3F0D7;
 }
-table{
+table {
 	width: 100%;
+	border-top: 1px solid #444444;
+	border-collapse: collapse;
+}
+th, td {
+	border-bottom: 1px solid #444444;
+	padding: 10px;
 }
