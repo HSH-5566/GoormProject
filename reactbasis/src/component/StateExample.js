@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 
 const StateExample = (props) => {
-	const [count, setCount] = useState(0);
+	const initCount = 0;
+	const [count, setCount] = useState(initCount);
 	
 	const plusClick = () =>{
 		setCount(count+1);
@@ -15,8 +16,8 @@ const StateExample = (props) => {
 		setCount(count*count);
 	}
 	
-	const initialClick = () => {
-		setCount(0);
+	const initClick = () => {
+		setCount(initCount);
 	}
 	
 	return (
@@ -25,7 +26,7 @@ const StateExample = (props) => {
 			<button onClick = {plusClick}> + </button>
 			<button onClick = {minusClick}> - </button>
 			<button onClick = {squareClick}> ** </button>
-			<button onClick = {initialClick}> 0 </button>
+			<button onClick = {initClick}> 0 </button>
 		</>
 	);
 };
