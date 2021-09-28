@@ -1,0 +1,15 @@
+package-lock.json 파일이란?
+-> package-lock.json은 node_modules구조나 package.json이 수정되고 생성될 때 당시 의존성에 대한 정확한 정보를 품고 자동으로 생성된다.
+   즉, 파일이 생성되는 시점의 의존성 트리에 대한 정확한 정보를 모두 가지고 있는 파일이다.
+
+package-lock.json 파일이 꼭 필요한 이유
+-> package.json의 의존성 선언에는 version range가 사용되는데, 이는 특정 버전이 아니라 버전의 범위를 의미한다.
+   즉, 예를 들어 package.json을 기반으로 npm i을 실행하면 현재는 4.16.3 버전이 설치 되지만 새로이 express의 마이너 패치가 이루어진 버전이 퍼블리시 되어있다면 동일한 package.json파일로 npm i을 실행해도 4.16.4, 이나 4.17.1 같은 다른 버전이 설치될 수 있다.
+   이 경우 간혹 업데이트된 버전이 오류를 발생시키는 경우가 있어 문제가 발생할 수 있다.
+-> 그런데 package-lock.json이 존재할 때 npm i를 실행하면 package.json을 사용하여 node_modules를 생성하지않고 package-lock.json을 사용하여 node-modules를 생성한다.
+   따라서 package-lock.json은 개발자들이 동일한 node_module 트리를 생성해서 같은 의존성을 설치할 수 있도록 보장하므로 안정성을 위해 package-lock.json은 매우 중요하다.
+=> package-lock.json 파일은 저장소에 꼭 같이 커밋해야 하고, 특히 node_modules 없이 배포하는 경우 반드시 필요하다.
+
++a) package.json 과 package-lock.json 으로 나눠둔 이유
+	-> 만약 package.json 에 패키지 버전을 정확히 하나로 정해놓는다면(즉 version range를 사용하지 않는다면),
+	   프로젝트에서 사용하고 있는 패키지의 중요한 버그 수정이 이루어질 때 마다 프로젝트의 package.json 에 적혀있는 버전도 수정해주어야하기 때문.
