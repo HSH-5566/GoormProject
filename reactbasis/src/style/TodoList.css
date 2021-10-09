@@ -1,0 +1,83 @@
+body {
+  background: #e0c097;
+  text-align: center;
+}
+.form {
+  margin: 30px 0px 20px 0px;
+}
+.titlename {
+  display: inline;
+  font-size: 2.5em;
+  font-weight: bold;
+  padding: 0 10px 5px 10px;
+  border: 10px solid black;
+  background: #ff7878;
+}
+.title {
+  border: none;
+  padding: 0.8em 0.5em;
+  border-bottom: 3px solid black;
+  width: 300px;
+  height: 20px;
+}
+.priority {
+  width: 90px;
+  padding: 0.8em 0.5em;
+  height: 45px;
+  border: none;
+  border-bottom: 3px solid black;
+}
+.clear,
+.save {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background: white;
+}
+.save:hover,
+.clear:hover {
+  cursor: pointer;
+  background: #cee5d0;
+}
+.list_all {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; /*수평 정렬*/
+  align-items: center;
+  justify-content: center;
+}
+.list_title {
+  font-size: 1.7rem;
+  font-weight: bold;
+  padding-bottom: 5px;
+  background-color: #cee5d0;
+}
+input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+.list {
+  width: 30vw;
+  height: 60vh;
+  overflow-y: scroll;
+  -webkit-box-shadow: 0px 7px 15px 4px rgba(0, 0, 0, 0.32);
+  box-shadow: 0px 7px 15px 4px rgba(0, 0, 0, 0.32);
+  background: #f3f0d7;
+}
+.list::-webkit-scrollbar {
+  width: 10px;
+}
+.list::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+}
+.list::-webkit-scrollbar-track {
+  background-color: gray;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  border-bottom: 1px solid #444444;
+  padding: 10px;
+}
